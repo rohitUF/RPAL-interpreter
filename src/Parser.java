@@ -187,6 +187,8 @@ public class Parser {
                 
                 // Mistake number 3
                 read();
+                //end mistake
+                
                 int vbNums = 0;
                 while (GetNextToken().IsVbToken())
                 {
@@ -221,6 +223,8 @@ public class Parser {
                 System.exit(0);
             }
         } */
+        
+        // end mistake
     }
     
     private boolean VlNext()
@@ -552,6 +556,8 @@ public class Parser {
             {
                 ast.pushNode("<false>");
             }
+            
+            // end mistake
             
             else if ( t.Value().equals("nil"))
             {
