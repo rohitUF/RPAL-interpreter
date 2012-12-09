@@ -32,7 +32,7 @@ public class ControlStructure
                if (node.getChild(0).toString().equals(","))
                {
                    // get all children of the comma and set them as left of lambda
-                   for (Node n : node.getChildren())
+                   for (Node n : node.getChild(0).getChildren())
                    {
                        ControlItem i = new ControlItem();
                        i.val = getRawToken(n.toString());

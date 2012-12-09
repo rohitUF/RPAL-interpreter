@@ -15,6 +15,7 @@ public class tau extends ControlItem
     
     public tau(ArrayList<ControlItem> c)
     {
+        super(ControlType.TAU, "");
         children = c;
     }
 }
