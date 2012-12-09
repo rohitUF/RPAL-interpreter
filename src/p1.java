@@ -40,6 +40,12 @@ public class p1 {
             AST st = getST(getAST(srcFile));
             System.out.println(st.toString());
         }
+        
+        else if (switches.equals("-cs"))
+        {
+            delta d = getDelta(getST(getAST(srcFile)));
+            d.print();
+        }
     }
     
     private static AST getAST(String srcFile) throws IOException
@@ -58,6 +64,13 @@ public class p1 {
         StandardTree st = new StandardTree();
         AST s = st.ASTtoSTConversion(ast);
         return s;
+    }
+    
+    private static delta getDelta(AST st)
+    {
+        ControlStructure cs = new ControlStructure();
+        delta d = cs.getDeltaZero(st.getRoot());
+        return d;
     }
     
     private static void printsource(String path) throws IOException

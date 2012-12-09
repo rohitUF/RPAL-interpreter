@@ -18,7 +18,8 @@ enum ControlType
     BETA,
     NIL,
     UNOP,
-    BINOP,
+    BINOPA,
+    BINOPL,
     E,
     AUG
 }

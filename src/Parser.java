@@ -414,7 +414,30 @@ public class Parser {
         {
             read();
             A();
-            ast.buildTree(t.Value(), 2);
+            if (t.Value().equals("gr") || t.Value().equals(">"))
+            {
+                ast.buildTree("gr", 2);
+            }
+            
+            else if (t.Value().equals("ge") || t.Value().equals(">="))
+            {
+                ast.buildTree("ge", 2);
+            }
+            
+            else if (t.Value().equals("ls") || t.Value().equals("<"))
+            {
+                ast.buildTree("ls", 2);
+            }
+            
+            else if (t.Value().equals("le") || t.Value().equals("<="))
+            {
+                ast.buildTree("le", 2);
+            }    
+            
+            else 
+            {
+                ast.buildTree(t.Value(), 2);
+            }
         }
     }
     
