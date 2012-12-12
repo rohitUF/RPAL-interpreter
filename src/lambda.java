@@ -13,11 +13,12 @@ public class lambda extends ControlItem
 {
     public delta d;
     public ArrayList<ControlItem> left;
+    public Environment env;
     
     lambda(delta d, ArrayList<ControlItem> leftChild)
     {
         super(ControlType.LAMBDA, "");
         this.d = d;
         this.left = leftChild;
-    }
+    }   
 }

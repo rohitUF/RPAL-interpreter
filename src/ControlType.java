@@ -20,6 +20,7 @@ enum ControlType
     UNOP,
     BINOPA,
     BINOPL,
-    E,
-    AUG
+    ENV,
+    AUG,
+    ETA
 }

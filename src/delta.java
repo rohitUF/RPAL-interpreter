@@ -9,15 +9,25 @@
  */
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class delta
 {
-    public ArrayList<ControlItem> items = new ArrayList<ControlItem>();
+    public Stack<ControlItem> items = new Stack<ControlItem>();
+    public int number;
+    public void putOnStack(Stack<ControlItem> s)
+    {
+       for (ControlItem i : items) 
+       {
+           s.push(i);
+       }
+       this.number = number;
+    }
     
     public void print()
     {
-        ArrayList<delta> temp = new ArrayList<delta>();
-        temp.add(this);
+        Stack<delta> temp = new Stack<delta>();
+        temp.push(this);
         int i = 0;
         
         while (i < temp.size())
@@ -48,24 +58,12 @@ public class delta
                         
                         int s = temp.size();
                         // first print the deltas
-                        System.out.print("delta" + (s -2) + " delta" + (s-1) + " " + "beta" + " " );
-                                                
-                        // now print the condition
-                        for (ControlItem it : b.cond.items)
-                        {
-                            System.out.print(it.val + " ");
-                        }
+                        System.out.print("delta" + (s -2) + " delta" + (s-1) + " " + "beta" + " " );                                           
                         break;
                         
                     case TAU:
                         tau t = (tau) item;
-                        System.out.print("tau" + (t.children.size()) + " ");
-                        
-                        // now print all its children
-                        for (ControlItem it : t.children)
-                        {
-                            System.out.print(it.val + " ");
-                        }                        
+                        System.out.print("tau" + t.n + " ");     
                         break;
                         
                     default:

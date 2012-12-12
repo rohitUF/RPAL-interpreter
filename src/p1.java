@@ -15,14 +15,25 @@ import java.io.FileReader;
 public class p1 {
     public static void main(String[] args) throws IOException
     {
-        if (args.length != 2)
+        String switches;
+        String srcFile;
+        if (args.length == 2)
         {
-            //System.out.println("Please provide src file name");
+           switches = args[0];
+           srcFile = args[1];
+        }
+        else if (args.length == 1)
+        {
+            switches = "-out";
+            srcFile = args[0];
+        }
+        else
+        {
+            System.out.println("Must provide src file name");
             return;
         }
         
-        String switches = args[0];
-        String srcFile = args[1];
+        
         if (switches.equals("-l"))
         {
             printsource(srcFile);
@@ -45,6 +56,13 @@ public class p1 {
         {
             delta d = getDelta(getST(getAST(srcFile)));
             d.print();
+        }
+        
+        else if (switches.equals("-out"))
+        {
+            delta d = getDelta(getST(getAST(srcFile)));
+            CSEMachine m = new CSEMachine(d);
+            m.run();
         }
     }
     

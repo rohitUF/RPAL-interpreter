@@ -11,11 +11,10 @@
 import java.util.ArrayList;
 public class tau extends ControlItem
 {
-    public ArrayList<ControlItem> children;
-    
-    public tau(ArrayList<ControlItem> c)
-    {
-        super(ControlType.TAU, "");
-        children = c;
-    }
+   public int n;
+   public tau(int n)
+   {
+       super(ControlType.TAU, "");
+       this.n = n;
+   }
 }

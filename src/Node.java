@@ -13,7 +13,7 @@ public class Node
 	//private Node right;
     private String value = null;
 	//private boolean bVal;
- 
+
     public Node(String nodeName)
     {
         value = nodeName;
