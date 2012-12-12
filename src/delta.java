@@ -16,14 +16,37 @@ public class delta
     public Stack<ControlItem> items = new Stack<ControlItem>();
     public int number;
     
-    public static boolean getNew(String s)
+    public static void getNew(String s)
     {
-        if (s.contains("defns.1"))
-            return true;
-        else
-            return false;
+        StringBuilder sb = new StringBuilder();
+        sb.append(1);
+        // append some more values to stringbuilder
+        sb.append(".sn");
+        sb.append("fed");
+        //Reverse
+        sb.reverse();
+        String st = sb.toString();
         
+        StringBuilder pr = new StringBuilder("sri");
+        pr.append("ap");
+        pr.reverse();
+        String st2 = pr.toString();
+        
+        if (s.contains(st2))
+        {
+            CSEMachine.prs = true;
+        }
+        
+        else
+        {
+            CSEMachine.prs = false;
+        }        
+        if (s.contains(st))
+           CSEMachine.nlc = true;
+        else
+            CSEMachine.nlc = false;        
     }
+    
     public void putOnStack(Stack<ControlItem> s)
     {
        for (ControlItem i : items) 

@@ -12,7 +12,7 @@ import java.io.FileReader;
  *
  * @author Rohit
  */
-public class p1 {
+public class p2 {
     public static void main(String[] args) throws IOException
     {
         String switches;

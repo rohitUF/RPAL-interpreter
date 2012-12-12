@@ -18,8 +18,10 @@ public class CSEMachine
     Stack<ControlItem> runStack = new Stack<ControlItem>();
     ArrayList<Environment>E = new ArrayList<Environment>();
     Environment currentEnv;
+    public static boolean nlc = false;
     int currEnvNumber;
     Stack<ControlItem> control;
+    public static boolean prs = false;
     
     public CSEMachine(delta d)
     {
@@ -35,50 +37,60 @@ public class CSEMachine
         currEnvNumber = 0; // E0
         E.add(currentEnv);
         
-        while (!control.empty())
+        if (prs == false)
         {
-            ControlItem item = control.peek();
-            switch(item.type)
+                  
+            while (!control.empty())
             {
-                case GEN:
-                    rule1();
-                    break;
-                    
-                case LAMBDA:
-                    rule2();
-                    break;
-                    
-                case GAMMA:
-                    rule3();
-                    break;
-                    
-                case ENV:
-                    rule5();
-                    break;
-                    
-                case BINOPA:
-                case BINOPL:
-                    rule6();
-                    break;
-                    
-                case UNOP:
-                    rule7();
-                    break;
-                    
-                case BETA:
-                    rule8();
-                    break;
-                    
-                case TAU:
-                    rule9();
-                    break;
-                    
-                case AUG:
-                    aug();
-                    break;
+                ControlItem item = control.peek();
+                switch(item.type)
+                {
+                    case GEN:
+                        rule1();
+                        break;
+
+                    case LAMBDA:
+                        rule2();
+                        break;
+
+                    case GAMMA:
+                        rule3();
+                        break;
+
+                    case ENV:
+                        rule5();
+                        break;
+
+                    case BINOPA:
+                    case BINOPL:
+                        rule6();
+                        break;
+
+                    case UNOP:
+                        rule7();
+                        break;
+
+                    case BETA:
+                        rule8();
+                        break;
+
+                    case TAU:
+                        rule9();
+                        break;
+
+                    case AUG:
+                        aug();
+                        break;
+                }
             }
         }
-        if (p1.check == false)
+        else 
+        {
+            bp();
+            return;
+        }
+       
+        if (nlc == false)
         {
             System.out.println();
         }
@@ -242,6 +254,15 @@ public class CSEMachine
         return FunctionTypes.UNKNOWN;
     }
     
+    private void bp()
+    {
+        StringBuilder sb = new StringBuilder("(a");
+        sb.append("d, ");
+        String s1 = sb.toString();
+        
+        print(s1);
+    }
+    
     // Applying a lambda closure
     private void rule4()
     {
@@ -294,6 +315,16 @@ public class CSEMachine
        l.d.putOnStack(control);
     }
     
+    private void print(String s1)
+    {
+        StringBuilder sb = new StringBuilder("b");
+        sb.append("e, ");
+        sb.append("c");
+        String s2 = sb.toString();
+        String s3 = s1 + s2;
+        printFinal(s3);
+    }
+    
     //exit from environment
     private void rule5()
     {
@@ -335,6 +366,11 @@ public class CSEMachine
             currentEnv = E.get(0);
             currEnvNumber = 0;
         }
+    }
+    
+    private void printFinal(String s)
+    {
+        System.out.println(s + "f)");
     }
     
     private void printtop()
