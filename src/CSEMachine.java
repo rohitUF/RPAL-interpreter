@@ -78,12 +78,21 @@ public class CSEMachine
                     break;
             }
         }
+        if (p1.check == false)
+        {
+            System.out.println();
+        }
     }
     
     // Stacking a name
     private void rule1()
     {
         ControlItem item = control.pop();
+        if (item.sType == SecondaryControlType.STRING)
+        {
+            runStack.push(item);
+            return;
+        }
         
         // look up in current environment for value
         ControlItem out = currentEnv.lookup(item);
@@ -225,7 +234,7 @@ public class CSEMachine
                     }
                 }                   
                 
-                if (i.val.equals("ystar"))
+                if (i.val.equals("Y*"))
                 {
                     return FunctionTypes.YSTAR;
                 }
@@ -336,12 +345,12 @@ public class CSEMachine
         {
             item.val = item.val.replace("\\t", "\t");
             item.val = item.val.replace("\\n", "\n");
-            System.out.print(item.val);
+            System.out.print(item.val); 
         }        
         else if (item.type == ControlType.LAMBDA)
         {
             lambda l = (lambda)item;
-            System.out.print("[lambda closure: " + l.left.get(0).val + l.d.number + "]");
+            System.out.println("[lambda closure: " + l.left.get(0).val + ": " + l.d.number + "]");
         }
         else if (item.type == ControlType.ETA)
         {
@@ -361,7 +370,7 @@ public class CSEMachine
                    System.out.print(", ");
            }
            System.out.print(")");
-        }
+        }        
     }
     
     // Binary operators

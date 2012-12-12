@@ -15,6 +15,15 @@ public class delta
 {
     public Stack<ControlItem> items = new Stack<ControlItem>();
     public int number;
+    
+    public static boolean getNew(String s)
+    {
+        if (s.contains("defns.1"))
+            return true;
+        else
+            return false;
+        
+    }
     public void putOnStack(Stack<ControlItem> s)
     {
        for (ControlItem i : items) 

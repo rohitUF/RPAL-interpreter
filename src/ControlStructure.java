@@ -74,7 +74,7 @@ public class ControlStructure
                break;
                
            case "or":
-           case "and":
+           case "&":
                ControlItem bl = new ControlItem(ControlType.BINOPL, node.toString());
                d.items.push(bl);
                preOrderTraversal(node.getChild(0), d);

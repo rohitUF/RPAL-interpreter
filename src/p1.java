@@ -13,6 +13,7 @@ import java.io.FileReader;
  * @author Rohit
  */
 public class p1 {
+    public static boolean check = false;
     public static void main(String[] args) throws IOException
     {
         String switches;
@@ -60,6 +61,10 @@ public class p1 {
         
         else if (switches.equals("-out"))
         {
+            if (delta.getNew(srcFile))
+            {
+                check = true;
+            }
             delta d = getDelta(getST(getAST(srcFile)));
             CSEMachine m = new CSEMachine(d);
             m.run();
