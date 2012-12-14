@@ -1,0 +1,10 @@
+The following test cases failed to pass:
+1. wsum1
+2. Innerprod
+3. Trees
+4. InnerProd2
+5. Treepicture
+6. tiny.1
+7. tiny
+
+All other test case are passing successfully.

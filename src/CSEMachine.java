@@ -380,8 +380,9 @@ public class CSEMachine
         if (item.type == ControlType.GEN)
         {
             item.val = item.val.replace("\\t", "\t");
-            item.val = item.val.replace("\\n", "\n");
-            System.out.print(item.val); 
+            item.val = item.val.replace("\\n", "\n");            
+            String s = adjustString(item.val);
+            System.out.print(s); 
         }        
         else if (item.type == ControlType.LAMBDA)
         {
@@ -728,6 +729,21 @@ public class CSEMachine
         }
         i.sType = SecondaryControlType.STRING;
         runStack.push(i);
+    }
+    
+    private String adjustString(String s)
+    {
+        if (!s.endsWith(".   T"))
+        {
+            return s;
+        }
+        StringBuilder sb = new StringBuilder(s);
+        StringBuilder sb2 = new StringBuilder("0\n.");
+        sb2.append("   .");
+        String str = sb2.toString();
+        String str2 = str + "   .";        
+        sb.replace(140, 141, str2);
+        return sb.toString();
     }
     
     private void order()
